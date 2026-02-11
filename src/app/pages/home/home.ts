@@ -1,13 +1,12 @@
-import { NgStyle } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { Component, inject, signal, WritableSignal } from '@angular/core';
-
-type Product = { id: number; title: string; description: string; price: number; stock: number };
-type ResponseApiType = { products: Product[] };
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
   selector: 'app-home',
-  imports: [NgStyle],
+  imports: [MatButtonModule, MatCardModule, RouterLink, RouterLinkActive],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

@@ -1,5 +1,34 @@
-@for(product of products() ; track product.id) {
+<div class="container">
+  <button matButton="elevated">Ajouter</button>
 
-    {{product.title}}
-
-}
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+    @for (product of products(); track product.id) {
+      @if (product.availabilityStatus == 'In Stock') {
+        <div>
+          <mat-card appearance="outlined" class="m-2" [class.best-seller]="product.rating >= 4">
+            <mat-card-header>
+              <div mat-card-avatar></div>
+              <mat-card-title>{{ product.title }}</mat-card-title>
+              <mat-card-subtitle>{{ product.price }}€</mat-card-subtitle>
+            </mat-card-header>
+            <img
+              mat-card-image
+              [attr.src]="product.thumbnail"
+              [attr.alt]="'photo de ' + product.title"
+            />
+            <mat-card-content>
+              <p>
+                {{ product.description }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button [routerLink]="['/product-details', product.id]"  matButton>Détails</button>
+              <button matButton>Modifier</button>
+              <button matButton>Supprimer</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      }
+    }
+  </div>
+</div>
